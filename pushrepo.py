@@ -14,6 +14,15 @@ def githubToHeroku(github_user, github_repo, heroku_repo):
     subprocess.call(['rm', '-rf', github_repo])
     return "Success?"
 
+
+### Function to connect to a postgres db
+def connect_db(host=os.environ['dbhost'], dbname=os.environ['dbname'], user=os.environ['dbuser'], password=os.environ['dbpassword'], sslmode='require'):
+    conn_string = "host='%s' dbname='%s' user='%s' password='%s'" % (host, dbname, user, password)
+    conn = psycopg2.connect(conn_string)
+    conn.set_isolation_level(0)
+    cur = conn.cursor()
+    return cur
+
 ### Flask nonsense
 app = Flask(__name__)
 app.debug=True
@@ -36,6 +45,8 @@ def pushCall():
     
     githubToHeroku(github_user, github_repo, heroku_repo)
     return render_template('index.html')
+
+
 
 if __name__ == '__main__':
     # Bing to PORT if defined, otherwise default to 5000.
