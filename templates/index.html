@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/default.css') }}">
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    </head>
+    <body>
+        <h1>Heroku / GitHub Local Management</h1>
+        <form method="GET" action="/pushToHeroku">
+            <input type="text" name="github_user" id="github_user" value="">
+            <input type="text" name="github_repo" id="github_repo" value="">
+            <input type="text" name="heroku_repo" id="heroku_repo" value="">
+            <input type="submit" name="submit" >
+        </form>
+    </body>
+    <script>
+    </script>
+</html>
