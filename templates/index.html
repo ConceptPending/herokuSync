@@ -8,9 +8,12 @@
     <body>
         <h1>Heroku / GitHub Local Management</h1>
         <form method="GET" action="/pushToHeroku">
-            <input type="text" name="github_user" id="github_user" value="">
-            <input type="text" name="github_repo" id="github_repo" value="">
-            <input type="text" name="heroku_repo" id="heroku_repo" value="">
+            <label for="github_user">Github User</label>
+            <input type="text" name="github_user" id="github_user" value=""><br>
+            <label for="github_repo">Github Repo</label>
+            <input type="text" name="github_repo" id="github_repo" value=""><br>
+            <label for="heroku_repo">Heroku Repo</label>
+            <input type="text" name="heroku_repo" id="heroku_repo" value=""><br>
             <input type="submit" name="submit" >
         </form>
     </body>
