@@ -1,7 +1,8 @@
 import os
 import subprocess
 import sys
-from flask import Flask, render_template, redirect, request
+import psycopg2
+from flask import Flask, render_template, redirect, request, session
 
 def githubToHeroku(github_user, github_repo, heroku_repo):
     github_string = "git@github.com:" + github_user + "/" + github_repo
@@ -33,6 +34,9 @@ app.secret_key = r'SuperDuperSecretKey'
 # Render and return index.html
 @app.route('/')
 def index():
+    if 'userid' in session:
+        userid = session['userid']
+        return render_template('index.html', userid=userid)
     return render_template('index.html')
 
 # Call to push a GitHub repo to Heroku
